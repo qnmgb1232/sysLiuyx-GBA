@@ -37,8 +37,8 @@ set(ENABLE_VFS ON)
 set(ENABLE_VFS_FD ON)
 set(ENABLE_DIRECTORIES ON)
 
-# Add mGBA as subdirectory
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/mgba mgba-build)
+# Add mGBA as subdirectory (relative to project root)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/../jni/mgba mgba-build)
 
 # Source files for JNI wrapper
 set(JNI_WRAPPER_SOURCES
@@ -50,8 +50,8 @@ add_library(gba SHARED ${JNI_WRAPPER_SOURCES})
 
 # Include directories
 target_include_directories(gba PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/mgba/src
-    ${CMAKE_CURRENT_SOURCE_DIR}/mgba/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/../jni/mgba/src
+    ${CMAKE_CURRENT_SOURCE_DIR}/../jni/mgba/include
 )
 
 # Link mGBA core library
