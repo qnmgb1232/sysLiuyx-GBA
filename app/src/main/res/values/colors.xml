@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="dark_purple_black">#FF0D0D1A</color>
+    <color name="neon_cyan">#FF00FFFF</color>
+    <color name="neon_pink">#FFFF00FF</color>
+    <color name="electric_purple">#FF9D00FF</color>
+</resources>

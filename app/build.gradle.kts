@@ -22,6 +22,10 @@ android {
     }
 }
 
+ksp {
+    arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 dependencies {
     // Compose BOM
     val composeBom = platform("androidx.compose:compose-bom:2024.01.00")
