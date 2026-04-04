@@ -25,11 +25,6 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK with NDK
-        uses: android-actions/setup-android@v2
-        with:
-          ndk-version: r26b
-
       - name: Cache Gradle packages
         uses: actions/cache@v3
         with:
