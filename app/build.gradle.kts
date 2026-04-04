@@ -6,7 +6,3 @@ android {
     namespace = "com.sysliux.gba"
     compileSdk = 34
 }
-
-kotlin {
-    jvmToolchain(17)
-}
