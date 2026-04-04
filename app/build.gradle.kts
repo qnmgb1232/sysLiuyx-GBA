@@ -13,21 +13,20 @@ android {
         ndk {
             abiFilters += listOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64")
         }
+        externalNativeBuild {
+            cmake {
+                cppFlags("-std=c++14")
+                arguments("-DANDROID_STL=c++_shared")
+                path = file("src/main/jni/CMakeLists.txt")
+                version = "3.18.1"
+            }
+        }
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.9.22"
-    }
-
-    externalNativeBuild {
-        cmake {
-            cppFlags("-std=c++14")
-            arguments("-DANDROID_STL=c++_shared")
-            path = file("src/main/jni/CMakeLists.txt")
-            version = "3.18.1"
-        }
     }
 }
 
