@@ -15,6 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
+          submodules: recursive
           lfs: false
           fetch-depth: 1
 
@@ -29,11 +30,20 @@ jobs:
         with:
           ndk-version: r26b
 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
 
       - name: Build with Gradle
-        shell: bash
         run: ./gradlew assembleDebug --no-daemon
 
       - name: Upload build artifacts
@@ -41,4 +51,12 @@ jobs:
         with:
           name: debug-apk
           path: app/build/outputs/apk/debug/*.apk
+          retention-days: 7
+
+      - name: Upload CMake build logs
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cmake-logs
+          path: app/.cxx/**/*.log
           retention-days: 7
