@@ -23,8 +23,8 @@ android {
 
     externalNativeBuild {
         cmake {
-            cppFlags += "-std=c++14"
-            arguments += listOf("-DANDROID_STL=c++_shared")
+            cppFlags("-std=c++14")
+            arguments("-DANDROID_STL=c++_shared")
             path = file("src/main/jni/CMakeLists.txt")
             version = "3.18.1"
         }
