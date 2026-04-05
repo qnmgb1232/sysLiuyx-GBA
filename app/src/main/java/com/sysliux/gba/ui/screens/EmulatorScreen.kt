@@ -11,6 +11,8 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Pause
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
@@ -138,7 +140,7 @@ fun EmulatorScreen(
                     if (state.isRunning) viewModel.pause() else viewModel.start()
                 }) {
                     Icon(
-                        imageVector = if (state.isRunning) Icons.Default.Pause else Icons.Default.PlayArrow,
+                        imageVector = if (state.isRunning) Icons.Filled.Pause else Icons.Filled.PlayArrow,
                         contentDescription = if (state.isRunning) "Pause" else "Play",
                         tint = NeonPink
                     )

@@ -107,7 +107,7 @@ fun VirtualGamepad(
                     alpha = buttonAlpha,
                     onPress = onButtonDown,
                     onRelease = onButtonUp,
-                    width = 60
+                    width = 60.dp
                 )
                 GameButton(
                     label = "START",
@@ -115,7 +115,7 @@ fun VirtualGamepad(
                     alpha = buttonAlpha,
                     onPress = onButtonDown,
                     onRelease = onButtonUp,
-                    width = 60
+                    width = 60.dp
                 )
             }
 
@@ -255,7 +255,7 @@ private fun Dpad(
                 alpha = 1f,
                 onPress = { onDirectionDown(DpadDirection(0, -1)) },
                 onRelease = { onDirectionUp(DpadDirection(0, -1)) },
-                size = buttonSizePx / 2
+                size = (buttonSizePx / 2).dp
             )
 
             // 下排：左 | 中 | 右
@@ -269,7 +269,7 @@ private fun Dpad(
                     alpha = 1f,
                     onPress = { onDirectionDown(DpadDirection(-1, 0)) },
                     onRelease = { onDirectionUp(DpadDirection(-1, 0)) },
-                    size = buttonSizePx / 2
+                    size = (buttonSizePx / 2).dp
                 )
 
                 // 中心占位
@@ -282,7 +282,7 @@ private fun Dpad(
                     alpha = 1f,
                     onPress = { onDirectionDown(DpadDirection(1, 0)) },
                     onRelease = { onDirectionUp(DpadDirection(1, 0)) },
-                    size = buttonSizePx / 2
+                    size = (buttonSizePx / 2).dp
                 )
             }
 
@@ -293,7 +293,7 @@ private fun Dpad(
                 alpha = 1f,
                 onPress = { onDirectionDown(DpadDirection(0, 1)) },
                 onRelease = { onDirectionUp(DpadDirection(0, 1)) },
-                size = buttonSizePx / 2
+                size = (buttonSizePx / 2).dp
             )
         }
     }
