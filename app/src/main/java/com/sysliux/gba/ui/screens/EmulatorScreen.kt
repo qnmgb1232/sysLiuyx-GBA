@@ -25,10 +25,12 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -184,6 +186,18 @@ private fun GameSurface(
     // 计算缩放比例
     var maxScale by remember { mutableStateOf(1f) }
 
+    // 帧缓冲状态
+    var frameBuffer by remember { mutableStateOf(ByteArray(0)) }
+    val scope = rememberCoroutineScope()
+
+    // 定期更新帧缓冲
+    LaunchedEffect(Unit) {
+        while (true) {
+            frameBuffer = viewModel.getFrameBuffer()
+            kotlinx.coroutines.delay(16) // ~60fps
+        }
+    }
+
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -200,7 +214,6 @@ private fun GameSurface(
     ) {
         // 帧缓冲渲染
         Canvas(modifier = Modifier.fillMaxSize()) {
-            val frameBuffer = viewModel.getFrameBuffer()
             if (frameBuffer.isNotEmpty()) {
                 val width = gameWidth
                 val height = gameHeight
