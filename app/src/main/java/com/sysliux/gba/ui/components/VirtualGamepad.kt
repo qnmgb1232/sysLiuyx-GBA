@@ -106,7 +106,7 @@ fun VirtualGamepad(
                     alpha = buttonAlpha,
                     onPress = onButtonDown,
                     onRelease = onButtonUp,
-                    width = 60.dp
+                    width = 60
                 )
                 GameButton(
                     label = "START",
@@ -114,7 +114,7 @@ fun VirtualGamepad(
                     alpha = buttonAlpha,
                     onPress = onButtonDown,
                     onRelease = onButtonUp,
-                    width = 60.dp
+                    width = 60
                 )
             }
 
