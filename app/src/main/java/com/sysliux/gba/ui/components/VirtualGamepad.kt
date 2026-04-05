@@ -189,15 +189,15 @@ private fun GameButton(
     onPress: (Int) -> Unit,
     onRelease: (Int) -> Unit,
     modifier: Modifier = Modifier,
-    size: Int = 44,
-    width: Int? = null
+    size: Dp = 44.dp,
+    width: Dp? = null
 ) {
     var isPressed by remember { mutableStateOf(false) }
 
     Box(
         modifier = modifier
-            .width((width ?: size).dp)
-            .size(size.dp)
+            .width(width ?: size)
+            .size(size)
             .alpha(alpha)
             .clip(RoundedCornerShape(8.dp))
             .background(if (isPressed) ButtonPressed else ButtonBackground)
