@@ -12,5 +12,5 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "sysliuxgba"
+rootProject.name = "sysLiux-GBA"
 include(":app")
