@@ -25,27 +25,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Android SDK with NDK
-        uses: android-actions/setup-android@v2
-        with:
-          ndk-version: r26b
-
       - name: Build with Gradle
         shell: bash
         run: |
           chmod +x gradlew
-          ./gradlew assembleDebug --no-daemon --info 2>&1 | tee build.log
-
-      - name: Upload build log
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-log
-          path: build.log
-          retention-days: 7
+          ./gradlew assembleDebug --no-daemon --stacktrace
 
       - name: Upload build artifacts
-        if: success()
         uses: actions/upload-artifact@v4
         with:
           name: debug-apk
