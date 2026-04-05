@@ -196,7 +196,7 @@ private fun GameButton(
 
     Box(
         modifier = modifier
-            .width(width ?: size.dp)
+            .width((width ?: size).dp)
             .size(size.dp)
             .alpha(alpha)
             .clip(RoundedCornerShape(8.dp))
